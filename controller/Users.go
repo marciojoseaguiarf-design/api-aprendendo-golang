@@ -2,6 +2,7 @@ package controller
 
 import (
 	"api-aula-1/models"
+	"api-aula-1/persistency"
 	"api-aula-1/responses"
 	"encoding/json"
 	"io"
@@ -37,6 +38,15 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 		responses.Err(w, http.StatusBadRequest, err)
 		return
 	}
+
+	db, err := persistency.Connect()
+if err != nil {
+	responses.Err(w, http.StatusInternalServerError, err)
+	return
+}
+defer db.Close()
+
+//Insere o usuário no banco de dados
 
 	// Retorna o usuário criado
 	w.WriteHeader(http.StatusCreated)

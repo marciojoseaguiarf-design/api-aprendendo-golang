@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-var booksRoutes = []Route {
+var booksRoutes = []Route{
 	{
 		Url:    "/books",
 		Method: http.MethodGet,
