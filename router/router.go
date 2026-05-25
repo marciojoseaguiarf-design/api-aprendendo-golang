@@ -1,8 +1,17 @@
 package router
 
-import "github.com/gorilla/mux"
+import (
+	"api-aula-1/routes"
+
+	"github.com/gorilla/mux"
+)
 
 func New() *mux.Router {
+
 	rotas := mux.NewRouter()
-		return rotas 
+
+	routes.Register(rotas)
+
+	return rotas
 }
+
